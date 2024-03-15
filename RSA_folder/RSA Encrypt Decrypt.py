@@ -37,7 +37,7 @@ def first_time():
 
 
 def generate_rsa_key_pair():
-    # Génération d'une paire de clés RSA
+    #_____________Generating_an_RSA_key_pair_____________#
     (public_key, private_key) = rsa.newkeys(2048)
     print("\n1    -First of all, plug in your USB drive, which will contain your private key.")
     letter_USB_drive = str(input("2    -Give us the letter of your USB drive so that we can register it (Ex: D; E; F; ...) : ")).upper()
@@ -45,7 +45,7 @@ def generate_rsa_key_pair():
     if os.path.exists(letter_USB_drive) == True:
         private_key_path = str(letter_USB_drive)+"private_key.pem"
         append_private_key_path(private_key_path)
-        # Sauvegarde de la clé publique dans un fichier (optionnel)
+        #_____________Saving_the_public_key_to_a_file_(optional)_____________#
         with open('public_key.pem', 'wb') as file:
             file.write(public_key.save_pkcs1())
         with open(private_key_path, 'wb') as file:
@@ -165,6 +165,7 @@ def encrypt_decrypt_folder(directory_path = find_folder_encrypt_path()):
     print("\n0    - First Time ?")
     print("1    - Encrypt Folder")
     print("2    - Decrypt Folder")
+    print("3    - Other parameter")
     print("99   - Reset")
     choice = input("Choice : ")
     if choice == "0":
@@ -174,11 +175,11 @@ def encrypt_decrypt_folder(directory_path = find_folder_encrypt_path()):
     if choice == "2" :
         decrypt_folder(find_folder_encrypt_path())
     if choice == "3" :
-        print("0    - Return")
-        print("1    - Choice folder_encrypt_path")
-        print("2    - Choice 'private_key_path'")
-        print("3    - Choice extension")
-        choice_settings = input("Choice : ")
+        print("     0    - Return")
+        print("     1    - Choice folder_encrypt_path")
+        print("     2    - Choice 'private_key_path'")
+        print("     3    - Choice extension")
+        choice_settings = input("     Choice : ")
         if choice_settings == "0" :
             encrypt_decrypt_folder()
         if choice_settings == "1" :
